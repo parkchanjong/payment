@@ -3,12 +3,13 @@ package Payment.pay.domain.history;
 import Payment.pay.domain.BaseTimeEntity;
 import Payment.pay.domain.account.Account;
 import Payment.pay.domain.account.Bank;
+import Payment.pay.domain.account.BankCode;
 import lombok.Getter;
 
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "dtype")
 @Getter
 public abstract class History extends BaseTimeEntity {
@@ -30,4 +31,5 @@ public abstract class History extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
     private Account account;
+
 }
