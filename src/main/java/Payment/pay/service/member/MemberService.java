@@ -1,4 +1,4 @@
-package Payment.pay.service;
+package Payment.pay.service.member;
 
 import Payment.pay.domain.member.MemberRepository;
 import Payment.pay.web.dto.MemberSaveRequestDto;
@@ -16,6 +16,6 @@ public class MemberService {
     @Transactional
     public Long save(MemberSaveRequestDto requestDto) {
         return memberRepository.save(requestDto.toEntity())
-                              .getId();
+                               .getId();
     }
 }

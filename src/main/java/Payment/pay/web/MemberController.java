@@ -1,6 +1,6 @@
 package Payment.pay.web;
 
-import Payment.pay.service.MemberService;
+import Payment.pay.service.member.MemberService;
 import Payment.pay.web.dto.MemberSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
