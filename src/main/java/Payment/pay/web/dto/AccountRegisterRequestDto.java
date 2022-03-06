@@ -1,6 +1,6 @@
 package Payment.pay.web.dto;
 
-import Payment.pay.domain.account.Bank;
+import Payment.pay.domain.account.BankCode;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,11 +10,13 @@ import lombok.NoArgsConstructor;
 public class AccountRegisterRequestDto {
 
     private Long memberId;
-    private Bank bank;
+    private BankCode bankCode;
+    private int bankAccountNumber;
 
     @Builder
-    public AccountRegisterRequestDto(Long memberId, Bank bank) {
+    public AccountRegisterRequestDto(Long memberId, BankCode bankCode, int bankAccountNumber) {
         this.memberId = memberId;
-        this.bank = bank;
+        this.bankCode = bankCode;
+        this.bankAccountNumber = bankAccountNumber;
     }
 }

@@ -5,7 +5,6 @@ import Payment.pay.domain.account.Balance;
 import Payment.pay.domain.member.Member;
 import Payment.pay.domain.member.MemberRepository;
 import Payment.pay.web.dto.AccountRegisterRequestDto;
-import Payment.pay.web.dto.BankRegisterDto;
 import Payment.pay.domain.account.Bank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -16,24 +15,20 @@ public class AccountMapper {
 
     private final MemberRepository memberRepository;
 
-    public Account toAccount(AccountRegisterRequestDto requestDto) {
+    public Account mapAccount(AccountRegisterRequestDto requestDto, Balance balance) {
         Member member = memberRepository.findById(requestDto.getMemberId())
                                         .orElseThrow(IllegalArgumentException::new);
 
-        BankRegisterDto bankRegisterDto = BankRegisterService.getBankAccountId(requestDto.getBank());
+        //        BankRegisterDto bankRegisterDto = BankRegisterService.getBankAccountId(requestDto.getBank());
 
         return Account.builder()
-                      .bankAccountId(bankRegisterDto.getBankAccountId())
+                      .bankAccountId(1234)
                       .bank(Bank.builder()
-                                .bankCode(requestDto.getBank()
-                                                    .getBankCode())
-                                .bankAccountNumber(requestDto.getBank()
-                                                             .getBankAccountNumber())
+                                .bankCode(requestDto.getBankCode())
+                                .bankAccountNumber(requestDto.getBankAccountNumber())
                                 .build())
                       .member(member)
-                      .balance(Balance.builder()
-                                      .amount(0)
-                                      .build())
+                      .balance(balance)
                       .build();
     }
 }

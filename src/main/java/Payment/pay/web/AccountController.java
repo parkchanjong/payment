@@ -14,7 +14,7 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping("/api/v1/account")
-    public Long save(@RequestBody AccountRegisterRequestDto requestDto) {
-        return accountService.register(requestDto);
+    public void save(@RequestBody AccountRegisterRequestDto requestDto) {
+        accountService.register(requestDto);
     }
 }
